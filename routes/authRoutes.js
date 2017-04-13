@@ -8,8 +8,6 @@ router.get('/facebook',
 router.get('/facebook/callback',
   passport.authenticate('facebook', { session: false, failureRedirect: '/' }),
   function(req, res) {
-  	console.log(req.user);
-    // Successful authentication, redirect home.
     res.redirect('/authorization?token='+req.user.token+"&name="+req.user.name);
   });
 

@@ -22,18 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/beers', beerRoutes);
 app.use('/auth', authRoutes);
 
-app.all('*', function(req, res) {
+app.all('[^.]+', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
-});
-
-// main error handler
-// warning - not for use in production code!
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.send({
-    message: err.message,
-    error: err
-  });
 });
 
 //start the server
