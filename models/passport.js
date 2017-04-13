@@ -2,9 +2,8 @@ var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../models/UserModel');
 var jwt = require('jsonwebtoken');
+
 //passport configuration here
-// clientID: '170854036767759',
-// clientSecret: '139d441b204ea835e8ce50b5b460a1c7'
 passport.use(new FacebookStrategy({
     clientID: '170854036767759',
     clientSecret: '139d441b204ea835e8ce50b5b460a1c7',
@@ -38,11 +37,6 @@ passport.use(new FacebookStrategy({
         }
       })
     })
-
-    // //code to create JWT goes here
-    // var token = jwt.sign({id: newUser.id, name: newUser.name
-    // }, 'thisIsTopSecret', { expiresIn: "7d" });
-    // console.log(token);
   }
 ));
 module.exports = passport;

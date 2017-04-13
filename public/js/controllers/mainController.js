@@ -2,16 +2,24 @@ app.controller('mainController', function($scope, beerFactory) {
 
   $scope.addBeer = function() {
     console.log("here");
-    beerFactory.addBeer($scope.newBeer).then(function(beer) {
+    beerFactory.addBeer($scope.newBeer)
+    .then(function(beer) {
       $scope.beers.push(beer);
-    });
+    })
+    .catch(function(err){
+      alert(arr.data.message);
+    })
   }
 
   $scope.removeBeer = function() {
     var self = this;
-    beerFactory.removeBeer(this.beer).then(function(response) {
+    beerFactory.removeBeer(this.beer)
+    .then(function(response) {
       $scope.beers.splice(self.$index, 1);
-    });
+    })
+    .catch(function(err){
+      alert(err.data.message);
+    })
   }
 
   beerFactory.getBeers().then(function(beers) {
