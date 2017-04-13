@@ -17,5 +17,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         beerParam: null
       }
     })
+    .state('authorization', {
+      url: '/authorization?token&name',
+      controller: function($stateParams,$state,$rootScope){
+        $rootScope.currentUser = $stateParams.name;
+        $state.go('home');
+      }
+    })
   $urlRouterProvider.otherwise('/home');
 });
